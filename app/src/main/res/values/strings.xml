@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Pomodoro</string>
+    <string name="tab_new">New</string>
+    <string name="tab_history">History</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="_25_00">25:00</string>
+    <string name="time_ago">%s ago</string>
+    <string name="notification_channel">Default</string>
+    <string name="channel_description">Default channel for notifications</string>
+    <string name="notification_title">Time over</string>
+    <string name="notification_text">Yes! Well done.</string>
+    <string name="no_history">No History yet.</string>
+</resources>
