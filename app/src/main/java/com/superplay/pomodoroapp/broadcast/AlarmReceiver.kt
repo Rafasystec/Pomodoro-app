@@ -27,7 +27,8 @@ class AlarmReceiver : BroadcastReceiver() {
         val i = Intent(context, AlarmReceiver::class.java)
         val pi = PendingIntent.getBroadcast(context, 0, i, 0)
         val systemTime = System.currentTimeMillis()
-        manager.set(AlarmManager.RTC_WAKEUP,  systemTime + INITIAL_TIME,pi)
+//        manager.set(AlarmManager.RTC_WAKEUP,  systemTime + INITIAL_TIME,pi)
+        manager.set(AlarmManager.RTC_WAKEUP,  systemTime + 25*60*1000,pi)
     }
 
     fun cancelAlarm(context: Context) {

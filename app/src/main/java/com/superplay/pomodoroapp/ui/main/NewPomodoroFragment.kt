@@ -37,9 +37,9 @@ class NewPomodoroFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
         binding.fabStartTime.setOnClickListener {
-            requireActivity().startService(Intent(requireContext(),AlarmService::class.java))
+//            requireActivity().startService(Intent(requireContext(),AlarmService::class.java))
             if(viewModel.canStop.value == null || !viewModel.canStop.value!!) {
-                viewModel.startCountDown()
+                viewModel.startCountDown(requireActivity())
             }else{
                 viewModel.stopCountDown()
             }
@@ -63,7 +63,7 @@ class NewPomodoroFragment : Fragment() {
             }else{
                 binding.fabStartTime.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_play))
                 binding.tvCountDown.setTextColor(ContextCompat.getColor(requireContext(),R.color.gray))
-                requireActivity().stopService(Intent(requireContext(),AlarmService::class.java))
+//                requireActivity().stopService(Intent(requireContext(),AlarmService::class.java))
                 binding.tvCountDown.text = getString(R.string._25_00)
             }
         })

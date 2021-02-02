@@ -1,14 +1,15 @@
 package com.superplay.pomodoroapp.ui.main
 
+import android.content.Context
 import android.os.CountDownTimer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.superplay.pomodoroapp.model.dto.PomodoroDTO
 import com.superplay.pomodoroapp.repository.PomodoroRespository
-import com.superplay.pomodoroapp.services.AlarmService
 import com.superplay.pomodoroapp.util.DateTimeUtil
 import com.superplay.pomodoroapp.util.INITIAL_TIME
+import com.superplay.pomodoroapp.util.NotificationUtil
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -19,10 +20,8 @@ class NewPomodoroViewModel(private val pomodoroRespository: PomodoroRespository)
     var countDownTimer : CountDownTimer ?= null
     var lastTimer      : Long           ?= null
     var lastId         : Long           ?= null
-    val alarmService: AlarmService by lazy {
-        AlarmService()
-    }
-    fun startCountDown(){
+
+    fun startCountDown(context: Context){
         viewModelScope.launch {
             lastId = pomodoroRespository.save(PomodoroDTO(0, INITIAL_TIME,0L,Date()))
         }
@@ -37,6 +36,7 @@ class NewPomodoroViewModel(private val pomodoroRespository: PomodoroRespository)
                 count.postValue("00:00")
                 canStop.value   = false
                 lastTimer       = 0L
+                NotificationUtil.notification(context)
                 registerStopCountDown()
             }
         }
