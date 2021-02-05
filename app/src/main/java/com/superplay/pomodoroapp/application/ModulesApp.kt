@@ -17,7 +17,7 @@ import org.koin.dsl.module
     de forma correta.
     --------------------------------------------------------------------
      */
-
+    //This change was made before the new sprint 2.0
     val repositories = module {
         fun providePomodoroRepository(pomodoroDao: PomodoroDao) : PomodoroRespository{
             return PomodoroDS(pomodoroDao)
