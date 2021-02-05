@@ -17,7 +17,7 @@ class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         val wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "pomodoro:alarme")
-        wl.acquire(26*60*1000L /*26 minutes*/)
+        wl.acquire(25*60*1000L /*26 minutes*/)
         NotificationUtil.notification(context)
         wl.release()
     }

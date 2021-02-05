@@ -26,7 +26,6 @@ import org.koin.dsl.module
     }
 
     val dataSources = module {
-//        factory { PomodoroDS(get()) }
     }
 
     val viewModels = module {
@@ -46,7 +45,6 @@ import org.koin.dsl.module
         fun providePomodoroDao(database : PomodoroDB):PomodoroDao{
             return database.pomodoroDAO()
         }
-
         single { provideDataBase(Application.getInstance())}
         single {providePomodoroDao(get())}
     }
